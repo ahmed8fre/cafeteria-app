@@ -1,0 +1,23 @@
+<Start>:
+    MDFloatLayout:
+        FitImage:
+            source: 'assets/images/start.jpeg'
+            size_hint: (1,1)
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            radius: [25]
+        MDARLabel:
+            text:app.title
+            # font_style: "Display"
+            halign: 'center'
+            font_name:'assets/fonts/GreatVibes-Regular.ttf'
+            font_size:sp(45)
+            
+            pos_hint:{'center_x':0.5,'center_y':0.9}
+        MDARLabel:
+            text:root.note
+            id:note
+            # font_style: "Display"
+            halign: 'center'
+            font_size:sp(25)
+            pos_hint:{'center_x':0.5,'center_y':0.15}
+        

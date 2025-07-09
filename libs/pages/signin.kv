@@ -1,0 +1,137 @@
+<SignIn>:
+    MDFloatLayout:
+        size:root.size
+        id:home_float
+        FitImage:
+            source: 'assets/images/background.jpeg'
+            size_hint: (1,1)
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            radius: [25]
+        MDARLabel:
+            text:app.title
+            # font_style: "Display"
+            halign: 'center'
+            font_name:'assets/fonts/GreatVibes-Regular.ttf'
+            font_size:sp(45)
+            pos_hint:{'center_x':0.5,'center_y':0.9}
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDCard:
+            orientation:"horizontal"
+            size_hint: 0.8, None
+            height:dp(70)
+            pos_hint: {'center_x': .5, 'center_y': .8}
+            radius: [dp(20),]
+            padding:[15,5,5,5]
+            spacing:15
+            MDIcon:
+                icon:"card-account-details-outline"
+                pos_hint: {'center_y': 0.5}
+            MDTextField:
+                id:name_input
+                hint_text: "Name/NeckName"
+                helper_text_mode: "on_focus" # يظهر النص المساعد عند التركيز على الحقل
+                pos_hint: {'center_y': 0.5} # وضعه في المنتصف أفقيا
+                size_hint_x: 0.6 # عرض الحقل
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDCard:
+            orientation:"horizontal"
+            size_hint: 0.8, None
+            height:dp(70)
+            pos_hint: {'center_x': .5, 'center_y': .7}
+            radius: [dp(20),]
+            padding:[15,5,5,5]
+            spacing:15
+            MDIcon:
+                icon:"email-outline"
+                pos_hint: {'center_y': 0.5}
+            MDTextField:
+                id:email_input
+                hint_text: "Email"
+                helper_text: "example@email.com"
+                helper_text_mode: "on_focus" # يظهر النص المساعد عند التركيز على الحقل
+                pos_hint: {'center_y': 0.5} # وضعه في المنتصف أفقيا
+                size_hint_x: 0.6 # عرض الحقل
+                validator: "email"
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDCard:
+            orientation:"horizontal"
+            size_hint: 0.8, None
+            height:dp(70)
+            pos_hint: {'center_x': .5, 'center_y': .6}
+            radius: [dp(20),]
+            padding:[15,5,5,5]
+            spacing:15
+            MDIcon:
+                icon:"shield-key-outline"
+                pos_hint: {'center_y': 0.5}
+            MDTextField:
+                id:passowrd_input
+                hint_text: "Passowrd"
+                helper_text: "Aa12@#0"
+                helper_text_mode: "on_focus" # يظهر النص المساعد عند التركيز على الحقل
+                pos_hint: {'center_y': 0.5} # وضعه في المنتصف أفقيا
+                size_hint_x: 0.6 # عرض الحقل
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDCard:
+            orientation:"horizontal"
+            size_hint: 0.8, None
+            height:dp(70)
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            radius: [dp(20),]
+            padding:[15,5,5,5]
+            spacing:15
+            MDIcon:
+                icon:"shield-key-outline"
+                pos_hint: {'center_y': 0.5}
+            MDTextField:
+                id:v_passowrd_input
+                hint_text: "Verify password"
+                helper_text: "Aa12@#0"
+                helper_text_mode: "on_focus" # يظهر النص المساعد عند التركيز على الحقل
+                pos_hint: {'center_y': 0.5} # وضعه في المنتصف أفقيا
+                size_hint_x: 0.6 # عرض الحقل
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDIconButton:
+            id:enter_button
+            icon: "login"
+            style: "outlined"
+            pos_hint: {'center_y': 0.25 ,'center_x':0.5}
+            icon_size:sp(40)
+            on_press:root.change_enter_button_pos(name_input.text,email_input.text,passowrd_input.text,v_passowrd_input.text)
+        MDARLabel:
+            id:enter_button_helper
+            text:'SignIn'
+            # font_style: "Display"
+            halign: 'center'
+            font_size:sp(20)
+            pos_hint: {'center_y': 0.3 ,'center_x':0.5}
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDARLabel:
+            id:login_button_helper
+            text:'login'
+            # font_style: "Display"
+            halign: 'center'
+            font_size:sp(20)
+            pos_hint: {'center_y': 0.2,'center_x':0.25}
+        MDIconButton:
+            id:login_button
+            icon: "account-arrow-left-outline"
+            style: "outlined"
+            pos_hint: {'center_y': 0.15 ,'center_x':0.25}
+            icon_size:sp(40)
+            on_press:app.change_screen('login-sc')
+        #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+        MDIconButton:
+            id:visitor_button
+            icon: "account-off-outline"
+            style: "outlined"
+            pos_hint: {'center_y': 0.15 ,'center_x':0.75}
+            icon_size:sp(40)
+            on_press:app.change_screen('home-sc')
+        MDARLabel:
+            id:visitor_button_helper
+            text:'visitor'
+            # font_style: "Display"
+            halign: 'center'
+            font_size:sp(20)
+            pos_hint: {'center_y': 0.2 ,'center_x':0.75}

@@ -1,0 +1,79 @@
+<Connect>:
+    MDFloatLayout:
+        size:root.size
+        id:home_float
+        md_bg_color: 0.2, 0.2, 0.2, .7
+        MDCard:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: dp(350), dp(60) # قد نحتاج حجم أكبر للصورة
+            pos_hint: {'center_x': .5, 'center_y': .68}
+            radius: [dp(45),]
+            #elevation: .5
+        
+        MDCard:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: dp(180), dp(180) # قد نحتاج حجم أكبر للصورة
+            pos_hint: {'center_x': .5, 'center_y': .8}
+            
+            radius: [dp(90),]
+            #elevation: .5
+
+            MDBoxLayout: # حاوية لجعل FitImage تأخذ شكل دائري
+                size_hint: None, None
+                size: dp(180), dp(180) # حجم حاوية الصورة
+                pos_hint: {'center_x': .5,'center_y':.5}
+                radius: [dp(90),] # لجعل الحاوية دائرية (نصف القطر = نصف حجم الضلع)
+                canvas:
+                    Color:
+                        rgba: 0, 0, 0, 0 # خلفية شفافة
+                    Ellipse:
+                        pos: self.pos
+                        size: self.size
+                
+                FitImage:
+                    source: "assets/images/WhatsApp Image 2025-06-26 at 5.15.27 PM.jpeg"
+                    radius: self.parent.radius # وراثة الـ radius من الحاوية لجعل الصورة دائرية
+                        
+        MDARLabel:
+            text:'AHMAD-GHADAB'
+            #elevation: .5
+            size_hint: .95 ,None
+            font_name:'assets/fonts/GreatVibes-Regular.ttf'
+            font_size: sp(25)
+            pos_hint: {'center_x': 0.5,'center_y': 0.68}
+        MDARLabel:
+            text:'Specializing in custom-built\n apps and gamesdesigned\n around your unique vision.'
+            size_hint: .95 ,None
+            font_size: sp(20)
+            pos_hint: {'center_x': 0.5,'center_y': 0.4}
+        MDARLabel:
+            text:'Contact with us !'
+            size_hint: .95 ,None
+            font_size: sp(20)
+            pos_hint: {'center_x': 0.5,'center_y': 0.23}
+        MDIconButton:
+            icon: 'whatsapp'
+            pos_hint: {'center_x': 0.15,'center_y': 0.15}
+            on_press:app.open_whatsapp_link('https://wa.me/971555992069' )
+        MDIconButton:
+            icon: 'instagram'
+            pos_hint: {'center_x': 0.35,'center_y': 0.15}
+            on_press:app.open_whatsapp_link('https://www.instagram.com/script_.code/' )
+        MDIconButton:
+            icon: 'assets/images/tik-tok.png'
+            pos_hint: {'center_x': 0.6,'center_y': 0.15}
+            on_press:app.open_whatsapp_link('https://www.tiktok.com/@script_code' )
+        MDIconButton:
+            icon: 'github'
+            pos_hint: {'center_x': 0.85,'center_y': 0.15}
+            on_press:app.open_whatsapp_link('https://github.com/ahmed8fre' )
+        MDIconButton:
+            icon:'menu'              
+            pos_hint: {'center_x': 0.045,'center_y': 0.98}
+            on_press: App_drop.check()
+        AppDrop:
+            id:App_drop
+            pos_hint: {'center_x': 0.045,'center_y': 1.5 }
+        

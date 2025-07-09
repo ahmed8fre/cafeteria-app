@@ -1,0 +1,102 @@
+<Home>:
+    MDFloatLayout:
+        size:root.size
+        id:home_float
+        FitImage:
+            source: 'assets/images/Food Wallpaper.jpeg'
+            size_hint: (1,1)
+            pos_hint:{'center_x':0.5,'center_y':0.5}
+            radius: [25]
+            opacity: 0.3
+        MDBoxLayout:
+            size_hint:1,0.93
+            pos_hint: {'left': 0.01 ,'top':1} # يمكن أن تكون هنا
+                
+            MDBoxLayout: # حاويه عرض المنتجات اللمعروضه للوقت الحالي
+                id: box_home_scrol
+                pos_hint: {'left': 0.01 ,'top':1} # يمكن أن تكون هنا
+                size_hint_x: 1 # لتحديد عرض صندوق التمرير
+                size_hint_y: 1 # مهم لتحديد ارتفاع ثابت للحاوية
+                # ارتفاع صندوق التمرير
+                orientation: 'vertical'
+                spacing:10
+                MDCard:
+                    size_hint:0.95,0.05
+                    md_bg_color:[0.4,0.4,0.4,0.8]
+                    MDARLabel:
+                        text:'Available foods'
+                        
+                MyScroll: # هذا هو ScrollView
+                    do_scroll_x: False # تمرير عمودي فقط
+                    MDGridLayout:
+                        id: home_scrol # معرف للوصول إليه من بايثون
+                        cols: 2 # عمودين
+                        adaptive_height: True # لتكييف الارتفاع حسب المحتوى (مهم جدا للتمرير)
+                        spacing: 15 # مسافة بين العناصر
+                        padding: [10, 10, 10, 10] # مسافة داخلية
+                        
+            MDBoxLayout:# حاويه الطلبات في المطبخ
+                #pos_hint: {'center_x': 0.5,'y': 0.08}
+                id:box_wallet_scrol
+                size_hint: 1 ,1
+                orientation: 'vertical'
+                spacing:10
+                MDCard:
+                    size_hint:0.95,0.05
+                    md_bg_color:[0.4,0.4,0.4,0.8]
+                    MDARLabel:
+                        text:'Kitchen orders'
+                MyScroll:
+                    do_scroll_x: False
+                    MDBoxLayout:
+                        adaptive_height:True
+                        # size: root.size
+                        id: orders_items
+                        size_hint_x: box_wallet_scrol.size_hint_x
+                        
+                        spacing: 25
+                        paddign: [30,10,1,10]
+                        orientation: 'vertical'
+                        
+                        
+            MDBoxLayout:# حاويه استلام الطلبات
+                #pos_hint: {'center_x': 0.5,'y': 0.08}
+                id:box_wallet_scrol
+                size_hint: 1 ,1
+                orientation: 'vertical'
+                spacing:10
+                MDCard:
+                    size_hint:0.95,0.05
+                    md_bg_color:[0.4,0.4,0.4,0.8]
+                    MDARLabel:
+                        text:'New Orders'
+                MyScroll:
+                    do_scroll_x: False
+                    MDBoxLayout:
+                        adaptive_height:True
+                        # size: root.size
+                        id: Received_items
+                        size_hint_x: box_wallet_scrol.size_hint_x
+                        
+                        spacing: 25
+                        paddign: [30,10,1,10]
+                        orientation: 'vertical'
+                        
+        MDIconButton:
+            icon:'account-outline'
+            icon_size:sp(50)
+            #md_bg_color:[0,0,0,0.4]
+            pos_hint:{'y':0,'center_x':0.5}
+            on_press:root.add_account_card()
+        MDIconButton:
+            icon:'cart-outline'
+            icon_size:sp(50)
+            #md_bg_color:[0,0,0,0.4]
+            pos_hint:{'y':0,'right':0.95}
+            on_press:root.add_Cart_card()
+        MDIconButton:
+            icon:'image-plus-outline'
+            icon_size:sp(50)
+            #md_bg_color:[0,0,0,0.4]
+            pos_hint:{'y':0,'x':0.05}
+            on_press:root.add_delivery_card()
